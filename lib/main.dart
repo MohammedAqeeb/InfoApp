@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'app/signup_screen.dart';
+import 'app/counter/counter_screen.dart';
+import 'app/counter/cubit/counter_cubit_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +12,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider(
+      create: (context) => CounterCubitCubit(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const CounterScreen(),
       ),
-      home: const SignUpScreen(),
     );
   }
 }
